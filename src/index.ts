@@ -1,7 +1,12 @@
 import fs from 'fs';
+import mkdirp from 'mkdirp';
 
 const rootPath = require('path').resolve(__dirname, '../');
 const testFilePath = rootPath + '/logging/test.json';
+
+if (!fs.existsSync(rootPath + '/logging')) {
+	mkdirp.sync(rootPath + '/logging');
+}
 
 async function readFile(filePath: string) {
 	console.log('reading file started at: ' + filePath);
