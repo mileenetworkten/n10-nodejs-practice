@@ -1,7 +1,8 @@
 import fs from 'fs';
 import mkdirp from 'mkdirp';
+import path from 'path';
 
-const rootPath = require('path').resolve(__dirname, '../');
+const rootPath = path.resolve(__dirname, '../');
 const testFilePath = rootPath + '/logging/test.json';
 
 if (!fs.existsSync(rootPath + '/logging')) {
@@ -32,7 +33,9 @@ async function writeFile(filePath: string, data: { [key: string]: any }) {
 }
 
 async function Main() {
-	// await readFile(testFilePath);
-	// await writeFile(testFilePath, {});
+	const data = await readFile(testFilePath);
+	console.log('read file results from main function :: \n', { data });
+	// data.e = 1;
+	// await writeFile(testFilePath, data);
 }
 Main();
